@@ -1,4 +1,3 @@
-// Function to update the visitor count
 function updateVisitorCount() {
     // Retrieve the current count from localStorage or initialize it to 0
     let count = parseInt(localStorage.getItem('visitorCount')) || 0;
