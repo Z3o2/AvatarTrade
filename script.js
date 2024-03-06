@@ -27,5 +27,8 @@ function updateVisitorCount() {
 // Call the updateVisitorCount function initially
 updateVisitorCount();
 
+// Set the initial lastUpdated timestamp
+localStorage.setItem('lastUpdated', Date.now());
+
 // Update the count every minute
-setInterval(updateVisitorCount, 1000); // Check every second for better accuracy
+setInterval(updateVisitorCount, 60000);
