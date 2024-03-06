@@ -1,5 +1,16 @@
 // Function to update the visitor count every minute
 function updateVisitorCount() {
+    // Retrieve the last updated timestamp from localStorage
+    let lastUpdated = parseInt(localStorage.getItem('lastUpdated')) || 0;
+    let currentTime = Date.now();
+    
+    // If a minute has passed since the last update, reset the count to 0
+    if (currentTime - lastUpdated >= 60000) {
+        localStorage.setItem('visitorCount', 0);
+        lastUpdated = currentTime;
+        localStorage.setItem('lastUpdated', lastUpdated);
+    }
+    
     // Retrieve the current count from localStorage or initialize it to 0
     let count = parseInt(localStorage.getItem('visitorCount')) || 0;
     
@@ -17,4 +28,4 @@ function updateVisitorCount() {
 updateVisitorCount();
 
 // Update the count every minute
-setInterval(updateVisitorCount, 60000); // 60000 milliseconds = 1 minute
+setInterval(updateVisitorCount, 1000); // Check every second for better accuracy
