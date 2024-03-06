@@ -30,5 +30,5 @@ updateVisitorCount();
 // Set the initial lastUpdated timestamp
 localStorage.setItem('lastUpdated', Date.now());
 
-// Update the count every minute
-setInterval(updateVisitorCount, 60000);
+// Update the count every second
+setInterval(updateVisitorCount, 1000); // Checking every second
