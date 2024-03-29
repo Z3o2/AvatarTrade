@@ -1,29 +1,33 @@
-// Function to update the visitor count
-function updateVisitorCount() {
-    // Retrieve the current count from localStorage or initialize it to 0
-    let count = parseInt(localStorage.getItem('visitorCount')) || 0;
-    
-    // Increment the count by one
-    count++;
-    
-    // Update the count in localStorage
-    localStorage.setItem('visitorCount', count);
-    
-    // Display the count on the webpage
-    document.getElementById('counter').textContent = count;
+/**
+ * @author san randry
+ * @license MIT license
+ * this plugin disable all inspect element feature on a web browser
+ */
+// disable right click
+document.oncontextmenu = function (e) {
+    e.preventDefault()
+    return false;
 }
-
-// Call the updateVisitorCount function initially
-updateVisitorCount();
-
-// Function to reset the count every minute
-function resetCount() {
-    // Reset the count to 0
-    localStorage.setItem('visitorCount', 0);
-    
-    // Display the count on the webpage
-    document.getElementById('counter').textContent = 0;
+// disable somme additional key
+document.onkeydown = function (e) {
+    // disable f12
+    if (event.keyCode == 123) {
+        return false;
+    }
+    // disable ctrl+shift+I
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+    }
+    // disable ctrl+shift+C
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        return false;
+    }
+    // disable ctrl+shift+j
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        return false;
+    }
+    // disable ctrl+shift+U
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+    }
 }
-
-// Reset the count every minute
-setInterval(resetCount, 60000); // 60000 milliseconds = 1 minute
